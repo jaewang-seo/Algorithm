@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project.ver1</title>
+    
+    <script src="prefixfree.min.js"></script>
+
+
+    <style>
+        
+        
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+        
+
+        .font{
+            font-family: 'Nanum Gothic', sans-serif;
+            font-size: 20px;
+        }
+
+        .table-width,td{
+            padding-right: 0px;            
+        }
+        #degree-left{
+            /* text-align: left; */
+            padding-right: 1px;
+            width: 200px;
+
+        }
+        #bright{
+            text-align: right;
+        }
+
+
+
+        .table-left{
+            width:10%;
+        }
+        .table-img{
+            width:;
+        }
+
+        body{
+            background-image: url();
+        }
+
+        #container{
+            width: 1000;
+        }
+
+        #left_table{
+            width: 500px;
+            height: 300px;
+            padding-right: 100px;
+            float: left;
+        }
+        #right_image{
+            width: 256px;
+            height: 256px;
+            padding-right: 100px;
+            float: left;
+        }
+        
+        #right_table{
+            float: left;
+        }
+
+        #bottom_table{
+            clear: both;
+        }
+        .table_size{
+            width: 200px;
+        }
+        #table_padding{
+            padding-right: 20px;
+        }
+
+        .input_image{
+        }
+        .input_image{
+        }
+    </style>
+    
+
+</head>
+<body class="font">
+    <fieldset>
+        <legend><h1>Algolithm</h1></legend>
+        <div id="container">
+            <div id="left_table">
+                <table class="table-width"> 
+                    <tr>
+                        <td>
+                            <label><strong>Image File</strong><br>
+                                <input type="file" autofocus required></label>
+                        </td>
+                        <td>
+                            <label><strong>JSON File</strong><br>
+                                <input type="file" autofocus required></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre></pre>
+                            <label>
+                                <strong>Select </strong>
+                                <input type="checkbox" value="DIVIDE" name="DIVIDE" autofocus required>분할
+                                <input type="checkbox" value="MERGE" name="MERGE" autofocus required>합성
+                                <input type="checkbox" value="ROTATE" name="ROTATE" autofocus required>회전
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre></pre>
+                            <strong>Color</strong><br>
+                            <input type="radio" name="col" autofocus required>RGB<br>
+                            <input type="radio" name="col" autofocus required>HSV<br>
+                            <input type="radio" name="col" autofocus required>YCbCr<br>
+                        </td>
+                        <!-- <td id="bright">
+                            <label>
+                                <strong>밝기</strong><br>
+                                <input type="number" style="height: 20px;" placeholder="n%" min="-10", max="10" step="5">
+                            </label>
+                        </td> -->
+                        <td id="degree-left">
+                            <strong >&ensp; +/-</strong>
+                            <strong>&emsp14;Rotaion</strong><br>
+    
+                            <select style="height: 26px;" autofocus required>
+                                <optgroup>
+                                    <option value="+">+</option>
+                                    <option value="-">-</option>
+                                </optgroup>
+                            </select>
+                                    
+                            <input type="number" style="height: 20px;" placeholder="degree°" min="0" max="360" step="45">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre></pre>
+                            <Button style="width: 55px; height: 30px;" class="RUN_BOTTON">RUN</Button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="right_image">
+                <img class="input_image" style="width: 100%;" src="image/image_preview.png" alt="">
+            </div>
+
+            <div id="right_table">
+                <label>
+                    <strong>&emsp;&emsp; 밝기 조절</strong>
+                    <script>
+                        var slider = $(".slider");
+                        slider.change(function(){
+                        $(".result").text( slider.val() );
+                        });
+                    </script>
+                    <form>
+                        <input type="range" min="-10" max="10" value="0" name="slider" for="result" list="bright" oninput="result.value=slider.value">
+                        <input style="height: 20px; width: 20px; text-align: right;" class="result" name="result" value="0" for="slider" oninput="slider.value=result.value">
+                        <datalist id="bright">
+                            <option>-10</option>
+                            <option>-9</option>
+                            <option>-8</option>
+                            <option>-7</option>
+                            <option>-6</option>
+                            <option>-4</option>
+                            <option>-3</option>
+                            <option>-5</option>
+                            <option>-2</option>
+                            <option>-1</option>
+                            <option>-1</option>
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                        </datalist>
+                        <small><small>%</small></small>
+                    </form>
+                </label>
+            </div>
+            
+
+            <div id="bottom_table">
+                <hr>
+                <table class="table_size" id="table_padding">
+                    <tr>
+                        <td class="table-left"><strong>Output</strong><pre></pre></td>
+                    </tr>
+                    <tr>
+                        <td class="table_padding">
+                            <img class="table-img" src="image/image_preview.png" alt="">
+                        </td>
+                        <td class="table_padding">
+                            <img class="table-img" src="image/image_preview.png" alt="">
+                        </td>
+                        <td>
+                            <img class="table-img" src="image/image_preview.png" alt="">
+                        </td>
+                        
+                        <td>
+                            <img class="table-img" src="image/image_preview.png" alt="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img class="table-img" src="image/image_preview.png" alt="">
+                        </td>
+                        
+                        <td>
+                            <img class="table-img" src="image/image_preview.png" alt="">
+                        </td>
+                        <td>
+                            <img class="table-img" src="image/image_preview.png" alt="">
+                        </td>
+                        <td>
+                            <img class="table-img" src="image/image_preview.png" alt="">
+                        </td>
+                    </tr>
+                </table>
+                <hr>
+                <button style="width: 55px; height: 30px;" class="Export">Export</button>
+            </div>
+        </div>
+    </fieldset>
+
+</body>
+</html>

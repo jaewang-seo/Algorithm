@@ -1,0 +1,25 @@
+Django command
+	
+	python -m django --version
+	django-admin startproject <file name>
+	python manage.py startapp <file name>
+	python manage.py runserver
+	python manage.py migrate
+	python manage.py makemygrations <app name>
+	
+Django tutorial
+
+	1. 	프로젝트 생성
+	2. 	<mysite>
+		urls.py : path 와 include(프로젝트 명.urls)
+	3.	<프로젝트 명>
+		urls.py 생성
+	4.	view.py : 웹 만들기
+	5.	urls.py : path 설정
+	5.	models.py : 정보들의 layer 만들기
+	7.	apps.py : 생성된 class명 복사
+	8.	<mysite>
+		settings.py : INSTALLED_APPS에서 '프로젝트 명.apps.생성된 class명'
+	9.	python manage.py makemygrations <apps name>
+	10.	python manage.py migrate
+	11. admin.py : models.py에서 작성한 클래스 import
