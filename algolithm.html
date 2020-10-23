@@ -8,23 +8,27 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
-    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-    .row.content {height: 1100px}
+
+    .row.content {height: 1500px}
     
-    /* Set gray background color and 100% height */
+
     .sidenav {
       background-color: #f1f1f1;
       height: 100%;
     }
+    .img_custom{
+      width: 100%;
+      text-align: center;
+    }
     
-    /* Set black background color, white text and some padding */
+
     footer {
       background-color: #555;
       color: white;
       padding: 15px;
     }
     
-    /* On small screens, set height to 'auto' for sidenav and grid */
+
     @media screen and (max-width: 767px) {
       .sidenav {
         height: auto;
@@ -49,22 +53,20 @@
         <hr style="border: solid 1px rgba(59, 59, 59, 0.226);">
 
         <div class="row">
-          <div class="col-sm-7">
-            <form>
-              <strong>Image File</strong>
-              <input class="btn btn-sm btn-default" type="file">
-              <strong>Json File</strong>
-              <input class="btn btn-sm btn-default" type="file">
-            </form>
+          <div class="col-sm-7" style="width: 270px">
+            <strong>Image File</strong>
+            <input class="btn btn-sm btn-default" type="file">
+            <strong>Json File</strong>
+            <input class="btn btn-sm btn-default" type="file">
           </div>
-          <div class="col-sm-5">
+          <div class="col-sm-5" style="margin-left: 0px;">
             <script>
                 var slider = $(".slider");
                 slider.change(function(){
                 $(".result").text( slider.val() );
                 });
             </script>
-            <form class="form-inline">
+            <form style="display: inline;">
               <label>brightness</label><br>
               <label class="range-inline" ><input type="range" min="-10" max="10" value="0" name="slider" for="result" list="bright" oninput="result.value=slider.value"></label> 
               <label class="range-inline"></label><input style="height: 20px; width: 29px; text-align: right;" class="result" name="result" value="0" for="slider" oninput="slider.value=result.value"> %</label> 
@@ -138,84 +140,60 @@
               </select>
               <input type="number" min="0", max="360", step="45" placeholder="degree°">
             </form>
-            
           </div>
         </div>
+        <hr style="border: solid 1px rgba(59, 59, 59, 0.226);">
+        <div class="row">
+          <div class="col-sm-offset-6 offset col-sm-6" style="text-align: right;">
 
+            <input type="button" class="btn btn-primary" name="RUN" value="RUN">
+            <input style="margin-left: 10px;" type="button" class="btn btn-primary" name="Export" value="Export">
+
+            <!-- <button type="button" class=" btn btn-primary" value="RUN">RUN</button>
+            <button style="margin-left: 10px;" type="button" class=" btn btn-primary" value="Export">Export</button> -->
+
+          </div>
+        </div>
       </div>
 
       <div class="col-sm-8">
-        <span style="font-size: 30px;">INPUT </span><button type="button" class=" btn btn-primary" value="RUN">RUN</button>
+        <h2>INPUT</h2>
         
         <hr style="border: solid 1px rgba(59, 59, 59, 0.226);">
         
         <!-- <span class="glyphicon glyphicon-time"></span> -->
         <!-- <span class="label label-danger">Food</span> <span class="label label-primary">Ipsum</span> -->
-        <img src="image/image_preview.png" alt="">
+        <img style="width: 30%;" src="image/image_preview.png" alt="">
         <hr style="border: solid 1px rgba(59, 59, 59, 0.226);">
         
 
-        <table class="table">
+        <table class="table table-bordered">
           <h2>OUTPUT</h2>
           <tr>
-            <td><img src="image/RUN.png" alt=""></td>
-            <td><img style="width: 100px;" src="image/image_preview_others.jpg" alt=""></td>
-            <td><img src="image/image_preview.png" alt=""></td>
-            <td><img src="image/image_preview.png" alt=""></td>
-            <td><img src="image/RUN.png" alt=""></td>
+            <td><img class="img_custom" src="image/6063415003520_H.jpg" alt=""></td>
+            <td><img class="img_custom" src="image/6063415003536_V.jpg" alt=""></td>
+            <td><img class="img_custom" src="image/6063415003537_H.jpg" alt=""></td>
           </tr>
           <tr>
-            <td><img src="image/image_preview.png" alt=""></td>
-            <td><img src="image/image_preview.png" alt=""></td>
-            <td><img src="image/image_preview.png" alt=""></td>
+            <td>image/BAGGAGE_20200707_112723_73729_A_0.jpg</td>
+            <td>image/BAGGAGE_20200707_112723_73729_A_0.jpg</td>
+            <td>image/BAGGAGE_20200707_112723_73729_A_0.jpg</td>
+          </tr>
+        </table>
+        <table class="table table-bordered">
+          <tr>
+            <td><img class="img_custom" src="image/6063415003520_H.jpg" alt=""></td>
+            <td><img class="img_custom" src="image/6063415003536_V.jpg" alt=""></td>
+            <td><img class="img_custom" src="image/6063415003537_H.jpg" alt=""></td>
+          </tr>
+          <tr>
+            <td>image/BAGGAGE_20200707_112723_73729_A_0.jpg</td>
+            <td>image/BAGGAGE_20200707_112723_73729_A_0.jpg</td>
+            <td>image/BAGGAGE_20200707_112723_73729_A_0.jpg</td>
           </tr>
         </table>
 
-        <h5><span class="glyphicon glyphicon-time"></span> Post by John Doe, Sep 24, 2015.</h5>
-        <h5><span class="label label-success">Lorem</span></h5><br>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <hr>
 
-        <h4>Leave a Comment:</h4>
-        <form role="form">
-          <div class="form-group">
-            <textarea class="form-control" rows="3" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-success">Submit</button>
-        </form>
-        <br><br>
-        
-        <p><span class="badge">2</span> Comments:</p><br>
-        
-        <div class="row">
-          <div class="col-sm-2 text-center">
-            <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-          </div>
-          <div class="col-sm-10">
-            <h4>Anja <small>Sep 29, 2015, 9:12 PM</small></h4>
-            <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <br>
-          </div>
-          <div class="col-sm-2 text-center">
-            <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-          </div>
-          <div class="col-sm-10">
-            <h4>John Row <small>Sep 25, 2015, 8:25 PM</small></h4>
-            <p>I am so happy for you man! Finally. I am looking forward to read about your trendy life. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <br>
-            <p><span class="badge">1</span> Comment:</p><br>
-            <div class="row">
-              <div class="col-sm-2 text-center">
-                <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-              </div>
-              <div class="col-xs-10">
-                <h4>Nested Bro <small>Sep 25, 2015, 8:28 PM</small></h4>
-                <p>Me too! WOW!</p>
-                <br>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
