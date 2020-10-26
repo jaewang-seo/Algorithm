@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="file" id="getfile" accept="image/jpeg, image/png">
+    <img id="preview" src=""  alt="로컬에 있는 이미지가 보여지는 영역1">
+    <img id="thumbnail" src=""  alt="로컬에 있는 이미지가 보여지는 영역2">
+    
+    <script>
+        var file = document.querySelector('#getfile');
+        // var file = document.getElementById('getfile').files;
+        file.onchange = function(){
+                
+            var fileList = file.files ;
+
+                    // 읽기
+            var reader = new FileReader();
+            reader.readAsDataURL(fileList[0]);
+
+                //로드 한 후
+            reader.onload = function  () {
+                document.querySelector('#preview').src = reader.result;
+                
+                var tempImgae = new Image();
+                
+                //잘봐
+                tempImgae.src = reader.result;
+
+                tempImgae.onload = function(){
+
+                    var canvas = document.createElement('canvas');
+                    var canvasContext = canvas.getContext("2d");
+
+                    canvasContext.drawImage(tempImgae, 0, 0);
+
+                    var MAX_WIDTH = 600;
+                    var MAX_HEIGHT = 600;
+                    var width = tempImgae.width;
+                    var height = tempImgae.height;
+
+                    if (width > height) {
+                        if (width > MAX_WIDTH) {
+                            height *= MAX_WIDTH / width;
+                            width = MAX_WIDTH;
+                        }
+                    } 
+                    else {
+                        if (height > MAX_HEIGHT) {
+                            width *= MAX_HEIGHT / height;
+                            height = MAX_HEIGHT;
+                        }
+
+                    }
+                    canvas.width = width;
+                    canvas.height = height;
+
+
+                    canvasContext.drawImage(tempImgae, 0, 0, width, height);
+                    var dataURI = canvas.toDataURL("image/jpeg");
+                    document.querySelector('#thumbnail').src = dataURI;
+                }   
+            };
+        };
+    </script>
+
+</body>
+</html>

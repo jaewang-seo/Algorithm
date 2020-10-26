@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>오픈이노베이션</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <img src="image/BAGGAGE_20200707_112723_73729_A_0.jpg" alt="" onload="resize(this)">
+
+    <script>
+    function resize(img){
+
+    // 원본 이미지 사이즈 저장
+    var MAX_WIDTH = 600;
+    var MAX_HEIGHT = 600;
+    var width = img.width;
+    var height = img.height;
+    
+    //가로가 길 경우!
+    if (width > height){
+        //설정한 가로 길이보다 크면!
+        if(width > MAX_WIDTH){
+            
+            //설정한 길이와 원래 길이의 비율만큼
+            //세로길이에 곱해 세로길이를 구한다
+            height *= MAX_WIDTH / width;
+            width = MAX_WIDTH;
+        }
+    }
+    else{
+        if(height > MAX_HEIGHT){
+            width *= MAX_HEIGHT / height;
+            height = MAX_HEIGHT;
+        }
+    }
+    img.width = width;
+    img.height = height;
+    }
+</script>
+</body>

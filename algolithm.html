@@ -17,7 +17,10 @@
       height: 100%;
     }
     .img_custom{
-      width: 100%;
+      max-width: 500px;
+      max-height: 800px;
+    }
+    .image_table_td{
       text-align: center;
     }
     
@@ -45,7 +48,7 @@
 
     <div class="row content">
 
-      <div class="col-sm-4 sidenav">
+      <div class="col-sm-3 sidenav">
         
         <h4>오픈이노베이션</h4><br>
         <hr style="border: solid 1px rgba(59, 59, 59, 0.226);">
@@ -53,78 +56,21 @@
         <div class="row">
           <div class="col-sm-7" style="width: 270px">
             <strong>Image File</strong>
-            <script>
-                function previewImage(f){
-
-                    var fileUP = f.files;
-                    var img = document.createElement("img")
-                    
-                    // 확장자 체크
-                    if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){
-                        alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name);
-
-                        // 선택한 파일 초기화
-                        f.outerHTML = f.outerHTML;
-                        document.getElementById('preview').innerHTML = '';
-                    }
-
-                    else {
-                        // FileReader 객체 사용
-                        var reader = new FileReader();
-                        // 파일 읽기가 완료되었을때 실행
-                        reader.onload = function(rst){
-                            img.src = rst.target.result
-
-                            var canvas = document.createElement("canvas");      
-                            var ctx = canvas.getContext("2d");
-                            ctx.drawImage(img, 0, 0);
-                            var MAX_WIDTH = 400;
-                            var MAX_HEIGHT = 400;
-                            var width = img.width;
-                            var height = img.height;
-
-                            //가로가 큰경우
-                            if (width > height) {
-                                if (width > MAX_WIDTH) {
-                                    height *= MAX_WIDTH / width;
-                                    width = MAX_WIDTH;
-                                }
-                            } 
-                            else {
-                            if (height > MAX_HEIGHT) {
-                                width *= MAX_HEIGHT / height;
-                                height = MAX_HEIGHT;
-                            }
-
-                            canvas.width = width;
-                            canvas.height = height;
-                            var ctx = canvas.getContext("2d");
-                            ctx.drawImage(img, 0, 0, width, height);
-                            var dataurl = canvas.toDataURL("image/png");
-
-                            document.getElementById('preview').src = dataurl
-                            }
-                        }
-                        // 파일을 읽는다
-                        reader.readAsDataURL(file[0]);
-                    }
-                }
-            </script>
-            <input class="btn btn-sm btn-default" type="file" name="files1" accept="image/*" onchange="previewImage(this)" />
+            <input class="btn btn-sm btn-default" type="file" id="getfile" accept="image/*">
             <strong>Json File</strong>
-            <input class="btn btn-sm btn-default" type="file">
+            <input class="btn btn-sm btn-default" type="file" accept=".Json">
           </div>
-          <div class="col-sm-5" style="margin-left: 0px;">
-            <script>
+          <div class="col-sm-5" style="margin-left: 0px; padding-left: 0px;">
+            <!-- <script>
                 var slider = $(".slider");
                 slider.change(function(){
                 $(".result").text( slider.val() );
                 });
-            </script>
-            <form style="display: inline;">
+            </script> -->
+            <form>
               <label>brightness</label><br>
-              <label class="range-inline" ><input type="range" min="-10" max="10" value="0" name="slider" for="result" list="bright" oninput="result.value=slider.value"></label> 
-              <label class="range-inline"></label><input style="height: 20px; width: 29px; text-align: right;" class="result" name="result" value="0" for="slider" oninput="slider.value=result.value"> %</label> 
+              <label><input type="range" min="-10" max="10" value="0" name="slider" for="result" list="bright" oninput="result.value=slider.value"></label> 
+              <label></label><input style="height: 20px; width: 29px; text-align: right;" class="result" name="result" value="0" for="slider" oninput="slider.value=result.value">%</label> 
               <datalist id="bright">
                 <option>-10</option>
                 <option>-9</option>
@@ -201,22 +147,75 @@
         </div>
       </div>
 
-      <div class="col-sm-8">
+      <div class="col-sm-9">
         <h2>INPUT</h2>
         
-        <hr style="border: solid 1px rgba(59, 59, 59, 0.226);">
+        <!-- <hr style="border: solid 1px rgba(59, 59, 59, 0.226);"> -->
         <div>
-          <img src="" id="preview" alt="">
-        </div>
-        <hr style="border: solid 1px rgba(59, 59, 59, 0.226);">
-        
+          <img style="border:1px solid #ddd ;" src="image/image_preview.png" id="preview" alt="">
+          <script>
+            var file = document.querySelector('#getfile');
+            file.onchange = function (){
+                      
+              var fileList = file.files ;
 
-        <table class="table table-bordered">
+              // 읽기
+              var reader = new FileReader();
+              reader.readAsDataURL(fileList[0]);
+
+              //로드 한 후
+              reader.onload = function(){
+            
+                var tempImgae = new Image();
+                
+                //잘봐
+                tempImgae.src = reader.result;
+
+                tempImgae.onload = function(){
+
+                  var canvas = document.createElement('canvas');
+                  var canvasContext = canvas.getContext("2d");
+
+                  canvasContext.drawImage(tempImgae, 0, 0);
+
+                  var MAX_WIDTH = 800;
+                  var MAX_HEIGHT = 800;
+                  var width = tempImgae.width;
+                  var height = tempImgae.height;
+
+                  if (width > height) {
+                      if (width > MAX_WIDTH) {
+                          height *= MAX_WIDTH / width;
+                          width = MAX_WIDTH;
+                      }
+                  } 
+                  else {
+                      if (height > MAX_HEIGHT) {
+                          width *= MAX_HEIGHT / height;
+                          height = MAX_HEIGHT;
+                      }
+
+                  }
+                  canvas.width = width;
+                  canvas.height = height;
+
+
+                  canvasContext.drawImage(tempImgae, 0, 0, width, height);
+                  var dataURI = canvas.toDataURL("image/jpeg");
+                  document.querySelector('#preview').src = dataURI;
+                };   
+              };
+            };
+          </script>
+        </div>
+          
+        <table class="table table-bordered text-center">
+          <!-- <hr style="border: solid 1px rgba(59, 59, 59, 0.226);"> -->
           <h2>OUTPUT</h2>
           <tr>
-            <td><img class="img_custom" src="image/6063415003520_H.jpg" alt=""></td>
-            <td><img class="img_custom" src="image/6063415003536_V.jpg" alt=""></td>
-            <td><img class="img_custom" src="image/6063415003537_H.jpg" alt=""></td>
+            <td class="image_table_td"><img class="img_custom" src="image/BAGGAGE_20200707_112723_73729_A_0.jpg" alt="" onload="resize"></td>
+            <td class="image_table_td"><img class="img_custom" src="image/6063415003536_V.jpg" alt="" onload="resize"></td>
+            <td class="image_table_td"><img class="img_custom" src="image/6063415003520_H.jpg" alt="" onload="resize"></td>
           </tr>
           <tr>
             <td>image/BAGGAGE_20200707_112723_73729_A_0.jpg</td>
@@ -226,17 +225,17 @@
         </table>
         <table class="table table-bordered">
           <tr>
-            <td><img class="img_custom" src="image/6063415003520_H.jpg" alt=""></td>
-            <td><img class="img_custom" src="image/6063415003536_V.jpg" alt=""></td>
-            <td><img class="img_custom" src="image/6063415003537_H.jpg" alt=""></td>
+            <td class="image_table_td"><img class="img_custom" src="image/BAGGAGE_20200707_112723_73729_B_0.jpg" alt="" onload="resize"></td>
+            <td class="image_table_td"><img class="img_custom" src="image/6063415003536_V.jpg" alt="" onload="resize"></td>
+            <td class="image_table_td"><img class="img_custom" src="image/6063415003537_H.jpg" alt="" onload="resize"></td>
           </tr>
           <tr>
             <td>image/BAGGAGE_20200707_112723_73729_A_0.jpg</td>
             <td>image/BAGGAGE_20200707_112723_73729_A_0.jpg</td>
             <td>image/BAGGAGE_20200707_112723_73729_A_0.jpg</td>
           </tr>
+          
         </table>
-
 
       </div>
     </div>
