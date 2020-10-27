@@ -232,15 +232,19 @@
 </body>
 
 <script>
+  //멈춤
   document.getElementById('exportBtn').addEventListener('click', (e)=>{
     e.preventDefault;
     sendImgPath();
   });
 
   function sendImgPath(){
-    const imgs= document.getElementsByName('outImg');
+    const img= document.getElementsByName('outImg');
 
-    for
+    for(var i = 0; i < img.length; i++ ){
+      var imgs = img[i];
+    }
+
     {"src":어쩌고}
 
     const xhr=new XMLHttpRequest();

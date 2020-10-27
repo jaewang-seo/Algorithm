@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script language="javascript">
+        //버튼클릭시 javascript 호출합니다.
+        function javascript(){
+            //이름을 이용해서 check의 크기를 알아내기
+            console.log(document.getElementsByName("check").length);
+         
+            //check를 가진 값의 이름을 가져오기
+            var size = document.getElementsByName("check").length;
+            for(var i = 0; i < size; i++){
+                console.log(document.getElementsByName("check")[i].value);
+            }
+         
+            //check이름을 가진 check중에서 체크된 것만 값 가져오기
+            var size = document.getElementsByName("check").length;
+            for(var i = 0; i < size; i++){
+                if(document.getElementsByName("check")[i].checked == true){
+                    console.log(document.getElementsByName("check")[i].value+"(체크)");
+                }
+            }
+         
+            //check중에 특별한 객체를 체크해주기
+            document.getElementsByName("check")[1].checked = true;
+        }
+    </script>
+        </head>
+        <body>
+        <input type='button' onclick='javascript()' value='버튼'/><br>
+        <input type='checkbox' name='check' value='값1'/> 값1<br/>
+        <input type='checkbox' name='check' value='값2'/> 값2<br/>
+        <input type='checkbox' name='check' value='값3'/> 값3<br/>
+        <input type='checkbox' name='check' value='값4'/> 값4<br/>
+        
+</body>
+</html>

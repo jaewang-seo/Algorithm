@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <td class="image_table_td"><img class="img_custom" src="{{ path }}" alt="" onload="resize" name="outImg"></td>
+    <input style="margin-left: 10px;" type="submit" class="btn btn-primary" name="Export" value="Export" id="exportBtn">
+
+    <script>
+        //멈춤
+        document.getElementById('exportBtn').addEventListener('click', (e)=>{
+          e.preventDefault;
+          sendImgPath();
+        });
+      
+        function sendImgPath(){
+          const img= document.getElementsByName('outImg');
+      
+          for(var i = 0; i < img.length; i++ ){
+            var imgs = img[i];
+          }
+      
+          {"src":어쩌고}
+      
+          const xhr=new XMLHttpRequest();
+          const formData=new FormData(form);
+          xhr.onload = ()=> {};
+          xhr.open('post',url);
+          formData.append('categoryName',name);
+          formData.append('abnormalFigures', percent)
+          xhr.send(formData);
+        }
+      </script>
+    
+</body>
+</html>
